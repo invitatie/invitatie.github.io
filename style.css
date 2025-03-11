@@ -1,0 +1,174 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.invitation-container {
+    background: white; /* Ensure the background is solid white */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    animation: funkyBackground 5s infinite alternate;
+    z-index: 1;
+}
+
+h1 {
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.description {
+    color: #2d2d2d;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.details {
+    color: #333;
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.invitation-text {
+    color: #333;
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+.images {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.images img {
+    width: 50%;
+    border-radius: 10px;
+    transition: transform 0.3s;
+    animation: wackyAnimation 3s infinite alternate;
+}
+
+.images img:hover {
+    transform: scale(1.1);
+}
+
+.images-left, .images-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.images-left {
+    left: 10px;
+}
+
+.images-right {
+    right: 10px;
+}
+
+.images-left img, .images-right img {
+    width: 16rem;
+    border-radius: 10px;
+    padding: 5rem;
+    transition: transform 0.3s;
+    animation: slideAnimation 5s infinite linear;
+}
+
+.images-left img:hover, .images-right img:hover {
+    transform: scale(1.1);
+}
+
+#vin-button {
+    background: #ff4081;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, left 0.5s, top 0.5s;
+    position: relative; /* Change this to absolute in JavaScript */
+}
+
+#vin-button:hover {
+    background: #ff84ad;
+}
+
+@keyframes funkyBackground {
+    0% { background: rgb(186, 106, 255); }
+    50% { background: rgb(255, 128, 170); }
+    100% { background: rgb(169, 64, 255); }
+}
+
+@keyframes wackyAnimation {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(10deg) scale(1.1); }
+    100% { transform: rotate(-10deg) scale(1); }
+}
+
+@keyframes slideAnimation {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .images-left, .images-right {
+        display: none;
+    }
+
+    .invitation-container {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .images img {
+        width: 80%;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .description, .details, .invitation-text {
+        font-size: 1em;
+    }
+
+    #vin-button {
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .invitation-container {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .images img {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 1.2em;
+    }
+
+    .description, .details, .invitation-text {
+        font-size: 0.9em;
+    }
+
+    #vin-button {
+        padding: 6px 12px;
+    }
+}
