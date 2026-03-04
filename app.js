@@ -106,21 +106,27 @@
 
         const bumpCloseVisibility = () => {
             // Make the X progressively easier to notice as the user interacts.
-            setCloseVisibility(closeVisibility + 0.06);
+            setCloseVisibility(closeVisibility + 0.1);
         };
 
         let closeSize = 20;
         const setCloseSize = (sizePx) => {
-            closeSize = sizePx;
-            const fontPx = sizePx;
-            if (verifyRoot) {
-                verifyRoot.style.setProperty('--close-size', `${closeSize}px`);
-                verifyRoot.style.setProperty('--close-font', `${fontPx}px`);
-            }
-            if (closeBtn instanceof HTMLElement) {
-                closeBtn.style.setProperty('--close-size', `${closeSize}px`);
-                closeBtn.style.setProperty('--close-font', `${fontPx}px`);
-            }
+            // Clamp so it doesn't get ridiculous
+            closeSize = Math.max(18, Math.min(72, Math.round(sizePx)));
+
+            // Derive button sizing from closeSize
+            const padY = Math.round(8 + (closeSize - 20) * 0.12);  // 8..~14
+            const padX = Math.round(12 + (closeSize - 20) * 0.22); // 12..~24
+            const fontPx = Math.round(14 + (closeSize - 20) * 0.10); // 14..~19
+
+            const applyVars = (el) => {
+                el.style.setProperty('--close-pad-y', `${padY}px`);
+                el.style.setProperty('--close-pad-x', `${padX}px`);
+                el.style.setProperty('--close-font', `${fontPx}px`);
+            };
+
+            if (verifyRoot) applyVars(verifyRoot);
+            if (closeBtn instanceof HTMLElement) applyVars(closeBtn);
         };
 
         const bumpCloseSize = () => {
