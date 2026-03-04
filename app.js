@@ -109,10 +109,10 @@
             setCloseVisibility(closeVisibility + 0.1);
         };
 
-        let closeSize = 20;
+        let closeSize = 30;
         const setCloseSize = (sizePx) => {
             // Clamp so it doesn't get ridiculous
-            closeSize = Math.max(18, Math.min(72, Math.round(sizePx)));
+            closeSize = sizePx;
 
             // Derive button sizing from closeSize
             const padY = Math.round(8 + (closeSize - 20) * 0.12);  // 8..~14
@@ -131,7 +131,7 @@
 
         const bumpCloseSize = () => {
             // Make the X physically larger each time the user restarts.
-            setCloseSize(closeSize + 3);
+            setCloseSize(closeSize + 10);
         };
 
         const flashHmm = () => {
