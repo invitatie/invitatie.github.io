@@ -70,13 +70,31 @@
         }
 
         // Verification (demo) modal + tic-tac-toe
-        const verifyRoot = document.getElementById('verify');
+        const verifyRootEl = document.getElementById('verify');
+        if (!(verifyRootEl instanceof HTMLElement)) {
+            // If the modal markup isn't present, keep the rest of the page working.
+            return;
+        }
+        const verifyRoot = verifyRootEl;
         const verifyLoading = document.getElementById('verifyLoading');
         const verifyGame = document.getElementById('verifyGame');
         const gridEl = document.getElementById('tttGrid');
         const statusEl = document.getElementById('tttStatus');
         const resetBtn = document.getElementById('tttReset');
-        const closeBtn = verifyRoot ? verifyRoot.querySelector('.verify__close') : null;
+        const closeBtn = verifyRoot.querySelector('.verify__close');
+
+        const hasVerifyUi =
+            verifyLoading instanceof HTMLElement &&
+            verifyGame instanceof HTMLElement &&
+            gridEl instanceof HTMLElement &&
+            statusEl instanceof HTMLElement &&
+            resetBtn instanceof HTMLElement &&
+            closeBtn instanceof HTMLElement;
+        if (!hasVerifyUi) {
+            // Markup mismatch (common after copy/paste to GitHub Pages).
+            // Avoid crashing the whole page.
+            return;
+        }
 
         let closeVisibility = 0;
         const setCloseVisibility = (value) => {
@@ -147,7 +165,6 @@
         };
 
         const openVerify = () => {
-            if (!verifyRoot || !verifyLoading || !verifyGame) return;
             verifyRoot.hidden = false;
             document.documentElement.style.overflow = 'hidden';
             setCloseVisibility(0);
