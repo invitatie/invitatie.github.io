@@ -1,30 +1,130 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ro">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitație la Petrecerea de Ziua de Naștere</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="images-left">
-        <img src="image2.jpg" alt="Image 2">
-    </div>
-    <div class="invitation-container">
-        <div class="images">
-            <img src="image1.webp" alt="Image 1">
-        </div>
-        <h1>Te invit la petrecerea mea de ziua de naștere!</h1>
-        <p class="description">Vino să sărbătorim cu bautura si club dupa ce ne drojdim!</p>
-        <p class="details">Data: 14 Martie</p>
-        <p class="details">Ora: 20:00</p>
-        <p class="details">Locația: Cosma-Margine Residence</p>
-        <p class="invitation-text">Nu uita sa-mi zici ce bei!</p>
-        <button id="vin-button">Vin!</button>
-    </div>
-    <div class="images-right">
-        <img src="image3.jpg" alt="Image 3">
-    </div>
-    <script src="app.js"></script>
-</body>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<meta name="theme-color" content="#ff4fa3" />
+
+		<title>Invitație • Ziua mea</title>
+		<meta
+			name="description"
+			content="Invitație la ziua mea — Cosmargine Residence, 14 martie, ora 20:00."
+		/>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Poppins:wght@400;600&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="style.css" />
+		<script src="app.js" defer></script>
+	</head>
+
+	<body>
+		<main class="page">
+			<section class="card" aria-label="Invitație la ziua mea">
+				<div class="card__bg" aria-hidden="true"></div>
+
+				<header class="hero">
+					<h1 class="hero__title">Te invit la ziua mea!</h1>
+					<p class="hero__subtitle">Vreau sa ne drojdim si dupa sa mergem la spirala</p>
+				</header>
+
+				<div class="info" role="list" aria-label="Detalii eveniment">
+					<div class="info__row" role="listitem">
+						<span class="info__label">Locație</span>
+						<span class="info__value">
+							<span class="pill">Cosmargine Residence</span>
+						</span>
+					</div>
+					<div class="info__row" role="listitem">
+						<span class="info__label">Data</span>
+						<span class="info__value">
+							<time datetime="2026-03-14" class="pill">14 martie</time>
+						</span>
+					</div>
+					<div class="info__row" role="listitem">
+						<span class="info__label">Ora</span>
+						<span class="info__value"><time datetime="20:00" class="pill">20:00</time></span>
+					</div>
+				</div>
+
+				<p class="note">
+					Te rog sa completezi chestionarul ca sa stiu ce bautura sa iau si ca sa confirmi prezenta!!!
+				</p>
+
+				<div class="actions">
+					<a
+						class="btn btn--primary"
+						id="rsvpButton"
+						href="https://forms.gle/DAMuLfbw2St1YDJCA"
+						target="_blank"
+						rel="noopener"
+					>
+						Completează chestionarul
+					</a>
+					<a
+						class="btn btn--ghost"
+						href="https://www.google.com/maps/place/Strad                        cd d:\website_invitea+Garabet+Ibrăileanu+6,+7,+scara+A,+ap+04,+700512+Iași/@47.1713089,27.5698666,17z/data=!3m1!4b1!4m5!3m4!1s0x40cafb63ff7fd765:0xc639f213a7c23290!8m2!3d47.1713053!4d27.5724415?entry=ttu&g_ep=EgoyMDI2MDMwMS4xIKXMDSoASAFQAw%3D%3D"
+						target="_blank"
+						rel="noopener"
+					>
+						Deschide locația
+					</a>
+				</div>
+
+				<footer class="footer">
+					<small>Eveniment sponsorizat de Israel</small>
+					<img class="footer__flag" src="flag.png" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+				</footer>
+			</section>
+
+			<div class="decor" aria-hidden="true">
+				<span class="decor__star"></span>
+				<span class="decor__star"></span>
+				<span class="decor__star"></span>
+				<span class="decor__balloon"></span>
+				<span class="decor__balloon"></span>
+			</div>
+
+			<div class="verify" id="verify" hidden>
+				<div class="verify__overlay" data-verify-close="true" aria-hidden="true"></div>
+				<section
+					class="verify__modal"
+					role="dialog"
+					aria-modal="true"
+					aria-labelledby="verifyTitle"
+				>
+					<header class="verify__header">
+						<div class="verify__titles">
+							<h2 class="verify__title" id="verifyTitle">reCAPTCHA</h2>
+							<p class="verify__subtitle">Trebuie sa il bati pe IsraelGPT ca sa demonstrezi ca nu esti robot.</p>
+						</div>
+						<button class="verify__close" type="button" aria-label="Închide" data-verify-close="true">
+							×
+						</button>
+					</header>
+
+					<div class="verify__body">
+						<div class="verify__loading" id="verifyLoading" aria-live="polite">
+							<span class="verify__spinner" aria-hidden="true"></span>
+							<span>Se verifică…</span>
+						</div>
+
+						<div class="verify__game" id="verifyGame" hidden>
+							<p class="verify__hint" id="tttStatus">Tu ești <strong>O</strong>. Eu sunt <strong>X</strong>.</p>
+							<div class="ttt" role="group" aria-label="Joc X și O">
+								<div class="ttt__grid" id="tttGrid"></div>
+							</div>
+							<div class="verify__actions">
+								<button class="verify__reset" type="button" id="tttReset">Try again</button>
+							</div>
+							<p class="verify__fineprint">CAPTCHA MADE BY @GOOGLE</p>
+						</div>
+					</div>
+				</section>
+			</div>
+		</main>
+	</body>
 </html>
